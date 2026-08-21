@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="cced738a-fa5f-4aff-8391-a37454d4b7ab" data-blockingmode="auto" type="text/javascript"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F5F5F7" />
+  <title>CALL X — Un appel suspect reçu par un proche ne doit pas être affronté seul</title>
+  <meta name="description" content="Si un appel suspect arrive chez votre enfant ou vos parents, ou si un signal d'hameçonnage vocal est détecté pendant l'appel, CALL X alerte le proche protecteur et permet, si besoin, de rejoindre l'appel." />
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/dist/tabler-icons.min.css" />
+
+  <style>
+    :root{
+      --bg:#F5F5F7;
+      --surface:#FFFFFF;
+      --surface-soft:#EFEFF1;
+      --surface-soft-2:#F2F2F4;
+      --surface-blue:#EEF2FF;
+      --surface-green:#F3F6E9;
+      --ink:#111113;
+      --text:#1D1D1F;
+      --muted:#6E6E73;
+      --subtle:#8E8E93;
+      --line:#D9D9DE;
+      --line-strong:#C7C7CC;
+      --cobalt:#4664FF;
+      --cobalt-hover:#3855EF;
+      --signal:#C9FF57;
+      --danger:#E95360;
+      --warning:#E7A62E;
+      --success:#229B6D;
+      --radius-control:10px;
+      --radius-button:12px;
+      --radius-card:18px;
+      --radius-media:22px;
+      --page-pad:clamp(16px,4vw,56px);
+      --max:1320px;
+      --ease:cubic-bezier(.16,1,.3,1);
+      --header-h:64px;
+      --font-ko:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --font-en:"Manrope","Pretendard Variable",Pretendard,sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;background:var(--bg);-webkit-text-size-adjust:100%}
+    body{
+      min-width:0;
+      overflow-x:hidden;
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--font-ko);
+      font-size:16px;
+      line-height:1.6;
+      letter-spacing:-.018em;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    h1,h2,h3,p,button,a{word-break:keep-all}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    img,video{display:block;width:100%;max-width:100%}
+    button,a{-webkit-tap-highlight-color:transparent}
+    :focus-visible{outline:3px solid rgba(70,100,255,.26);outline-offset:3px}
+
+    .container{width:min(100%,var(--max));margin-inline:auto;padding-inline:var(--page-pad)}
+    .section{padding:clamp(76px,9vw,136px) 0}
+    .section-soft{background:#EFEFF1}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font:700 12px/1 var(--font-en);letter-spacing:.08em;text-transform:uppercase}
+    .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 5px rgba(201,255,87,.13)}
+    .section-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:30px;align-items:end;margin-bottom:30px}
+    .section-head h2,.survey-intro h2,.trust-copy h2,.faq-head h2{margin-top:14px;color:var(--ink);font-size:clamp(38px,5.3vw,72px);line-height:1.02;letter-spacing:-.05em;font-weight:620;text-wrap:balance}
+    .section-head>p{justify-self:end;max-width:430px;color:var(--muted);font-size:15px;line-height:1.65}
+
+    .btn{min-height:48px;border:1px solid transparent;border-radius:var(--radius-button);padding:0 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:650;transition:background .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease),color .2s var(--ease)}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--cobalt);color:#fff}
+    .btn-primary:hover{background:var(--cobalt-hover)}
+    .btn-secondary{background:#fff;color:var(--text);border-color:var(--line-strong)}
+    .btn-secondary:hover{background:#F8F8FA}
+    .btn-dark{background:var(--ink);color:#fff}
+    .btn[disabled]{cursor:not-allowed;opacity:.45}
+
+    .header{position:sticky;top:0;z-index:50;background:rgba(245,245,247,.88);border-bottom:1px solid rgba(17,17,19,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .nav{min-height:var(--header-h);display:flex;align-items:center;gap:18px}
+    .brand{color:var(--ink);font:700 20px/1 var(--font-en);letter-spacing:-.045em;white-space:nowrap}
+    .brand .x{color:var(--cobalt)}
+    .nav-links{display:flex;align-items:center;gap:22px;margin-left:28px;color:var(--muted);font-size:13px;font-weight:650}
+    .nav-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+    .nav .btn{min-height:40px;padding-inline:14px;font-size:13px}
+
+    .hero{position:relative;padding:clamp(54px,6.5vw,92px) 0 clamp(48px,6vw,78px);overflow:hidden;background:radial-gradient(circle at 80% 8%,rgba(70,100,255,.08),transparent 26%),radial-gradient(circle at 16% 78%,rgba(201,255,87,.07),transparent 20%),linear-gradient(180deg,#FBFBFD,#F5F5F7)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.16fr) minmax(340px,.84fr);gap:clamp(34px,6vw,86px);align-items:center}
+    .hero-copy{max-width:820px;min-width:0}
+    .hero .eyebrow{margin-bottom:20px}
+    .hero h1{max-width:940px;color:var(--ink);font-size:clamp(54px,7.2vw,106px);line-height:.94;letter-spacing:-.062em;font-weight:650;text-wrap:balance}
+    .hero h1 .soft{display:block;color:#75757A;font-weight:520}
+    .hero-sub{max-width:700px;margin-top:24px;color:var(--muted);font-size:clamp(17px,1.55vw,21px);line-height:1.6}
+    .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:28px}
+    .hero-note{width:100%;color:var(--subtle);font-size:13px;font-weight:600}
+    .hero-side{min-width:0}
+    .video-shell{position:relative;min-height:520px;overflow:hidden;border:1px solid #D8D8DC;border-radius:var(--radius-media);background:radial-gradient(circle at 50% 14%,rgba(70,100,255,.11),transparent 28%),linear-gradient(145deg,#ECECF0,#E2E2E7);box-shadow:0 18px 45px rgba(0,0,0,.055)}
+    .video-shell .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .video-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.02) 40%,rgba(16,20,30,.48) 100%);pointer-events:none}
+    .risk-toast{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:15px;border-radius:14px;background:rgba(255,255,255,.92);border:1px solid rgba(17,17,19,.09);backdrop-filter:blur(16px);box-shadow:0 14px 36px rgba(0,0,0,.08)}
+    .risk-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#FFF0F1;color:var(--danger);font-weight:800}
+    .risk-toast strong{display:block;font-size:14px;line-height:1.35}
+    .risk-toast p{margin-top:3px;color:var(--muted);font-size:12px;line-height:1.4}
+    .risk-state{display:inline-flex;align-items:center;gap:7px;color:#424248;font-size:11px;font-weight:700;white-space:nowrap}
+    .risk-state i{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 4px rgba(201,255,87,.18)}
+
+    /* B 방식의 칩 UI로 교체 */
+    .hero-zeros{display:flex;flex-wrap:wrap;gap:10px;border-top:0;margin-top:18px;padding-top:0}
+    .hero-zeros>div{padding:0}
+    .hero-zeros span{display:inline-flex;align-items:center;padding:9px 14px;border:1px solid var(--line-strong);border-radius:999px;background:#fff;color:var(--text);font-size:13px;font-weight:650}
+
+    .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .problem-card{min-height:430px;display:flex;flex-direction:column;justify-content:space-between;padding:24px;border:1px solid var(--line);border-radius:var(--radius-card);background:#fff;overflow:hidden;position:relative;box-shadow:0 12px 28px rgba(0,0,0,.035)}
+    .problem-card:nth-child(1){background:linear-gradient(160deg,#FFFFFF,#F3F4F8)}
+    .problem-card:nth-child(2){background:linear-gradient(160deg,#FFFFFF,#F4F5EF)}
+    .problem-kicker{display:flex;justify-content:space-between;gap:16px;color:#74747A;font-size:12px;font-weight:700}
+    .problem-visual{margin:26px 0 24px;min-height:270px;border-radius:14px;border:1px solid rgba(17,17,19,.07);background:#fff;display:grid;place-items:center;position:relative;overflow:hidden}
+    .problem-photo{width:100%;height:100%;object-fit:cover;display:block}
+    .problem-card h3{font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.04em;font-weight:600;max-width:620px}
+    .problem-card p{margin-top:12px;color:var(--muted);max-width:560px}
+
+    .how-panel{padding:clamp(20px,3vw,34px);border:1px solid var(--line);border-radius:var(--radius-card);background:linear-gradient(135deg,#ECEEFA,#F7F7F9 54%,#F0F2EA);box-shadow:0 12px 28px rgba(0,0,0,.035)}
+    .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .how-step{min-height:230px;padding:20px;border:1px solid rgba(17,17,19,.07);border-radius:14px;background:rgba(255,255,255,.94);display:flex;flex-direction:column}
+    .how-num{color:var(--subtle);font:700 11px/1 var(--font-en);letter-spacing:.06em}
+    .how-icon{width:44px;height:44px;margin-top:34px;border-radius:12px;display:grid;place-items:center;background:var(--surface-blue);color:var(--cobalt);font-weight:800}
+    .how-step:nth-child(3) .how-icon{background:#FFF0F1;color:var(--danger)}
+    .how-step:nth-child(4) .how-icon{background:var(--surface-green);color:#677B2C}
+    .how-step h3{margin-top:auto;font-size:20px;line-height:1.25;letter-spacing:-.03em}
+    .how-step p{margin-top:7px;color:var(--muted);font-size:13px;line-height:1.5}
+
+    .survey{background:#F2F2F4;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .survey-shell{display:grid;grid-template-columns:minmax(260px,.64fr) minmax(0,1.36fr);gap:clamp(34px,6vw,78px);align-items:start}
+    .survey-intro{position:sticky;top:calc(var(--header-h) + 28px)}
+    .survey-intro h2{font-size:clamp(40px,4.8vw,64px)}
+    .survey-intro p{margin-top:18px;color:var(--muted);max-width:430px}
+    .survey-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+    .meta-chip{padding:8px 10px;border:1px solid var(--line-strong);border-radius:999px;background:rgba(255,255,255,.68);color:var(--muted);font-size:11px;font-weight:700}
+    .survey-card{min-width:0;padding:clamp(20px,3vw,34px);border:1px solid var(--line-strong);border-radius:var(--radius-card);background:#fff;box-shadow:0 16px 36px rgba(0,0,0,.045);overflow:hidden}
+    .survey-progress{display:flex;align-items:center;gap:16px;margin-bottom:28px;color:var(--subtle);font:700 12px/1 var(--font-en)}
+    .progress-track{flex:1;height:5px;border-radius:999px;background:#EBEBEF;overflow:hidden}
+    .progress-bar{height:100%;width:33.333%;background:var(--cobalt);border-radius:inherit;transition:width .3s var(--ease)}
+    #questionViewport{position:relative;overflow:hidden;transition:height .34s var(--ease)}
+    .survey-question{display:none}
+    .survey-question.active{display:block}
+    .survey-question.enter-from-right{animation:qInRight .34s var(--ease) both}
+    .survey-question.enter-from-left{animation:qInLeft .34s var(--ease) both}
+    .survey-question.leave-to-left{display:block;position:absolute;inset:0;width:100%;animation:qOutLeft .24s ease both;pointer-events:none}
+    .survey-question.leave-to-right{display:block;position:absolute;inset:0;width:100%;animation:qOutRight .24s ease both;pointer-events:none}
+    @keyframes qInRight{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+    @keyframes qInLeft{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:none}}
+    @keyframes qOutLeft{from{opacity:1;transform:none}to{opacity:0;transform:translateX(-18px)}}
+    @keyframes qOutRight{from{opacity:1;transform:none}to{opacity:0;transform:translateX(18px)}}
+    .survey-question h3{font-size:clamp(27px,3.4vw,42px);line-height:1.14;letter-spacing:-.04em;font-weight:600}
+    .survey-help{margin-top:10px;color:var(--muted);font-size:14px}
+    .option-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:24px}
+    .option{min-height:62px;border:1px solid var(--line-strong);border-radius:var(--radius-control);background:#FCFCFD;color:var(--text);padding:14px 15px;text-align:left;font-weight:620;transition:background .2s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease),transform .18s var(--ease)}
+    .option:hover{border-color:rgba(70,100,255,.40);background:#F7F8FF}
+    .option:active{transform:scale(.99)}
+    .option.selected{border-color:var(--cobalt);background:var(--surface-blue);box-shadow:inset 0 0 0 1px var(--cobalt)}
+    .subquestion{display:none;margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+    .subquestion.show{display:block;animation:subIn .24s var(--ease) both}
+    @keyframes subIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+    .subquestion h4{font-size:16px;line-height:1.4}
+    .survey-actions{display:flex;justify-content:space-between;gap:10px;margin-top:28px}
+    .survey-msg{min-height:22px;margin-top:12px;color:var(--danger);font-size:13px}
+    .survey-success{display:none}
+    .survey-success.show{display:block}
+    .survey-success h3{font-size:clamp(30px,4vw,44px);line-height:1.1;letter-spacing:-.04em}
+    .survey-success p{margin-top:14px;color:var(--muted)}
+    .survey-summary{margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#F7F7F9;display:grid;gap:9px}
+    .summary-row{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:13px}
+    .summary-row span:first-child{color:var(--subtle)}
+    .hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+
+    .usecase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .usecase-card{min-height:440px;border:1px solid var(--line);border-radius:var(--radius-card);background:#fff;padding:22px;display:flex;flex-direction:column;box-shadow:0 12px 28px rgba(0,0,0,.03)}
+    .usecase-card:nth-child(2){background:#F7F7F9}
+    .usecase-card:nth-child(3){background:#F4F5EE}
+    .usecase-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--subtle);font:700 11px/1 var(--font-en)}
+    .status-pill{display:inline-flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:11px;font-weight:700}
+    .status-pill i{width:7px;height:7px;border-radius:50%;background:var(--signal)}
+    .usecase-visual{flex:1;min-height:180px;display:flex;align-items:center;justify-content:center;margin:20px 0}
+    .case-flow{width:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;color:var(--muted);font-size:12px;text-align:center}
+    .case-node{padding:12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.78)}
+    .case-arrow{color:var(--cobalt);font:700 18px/1 var(--font-en)}
+
+    .usecase-visual{min-height:300px;height:300px;align-items:stretch}
+    .scene{width:100%;border-radius:16px;border:.5px solid #E4E4EA;padding:16px 15px;display:flex;flex-direction:column;justify-content:center;gap:9px;font-family:var(--font-en)}
+    .scene-kids{background:linear-gradient(160deg,#EEF2FF,#F3F6E9)}
+    .scene-senior{background:linear-gradient(160deg,#FBECEE,#F7F7F9)}
+    .scene-incall{background:linear-gradient(160deg,#EEF2FF,#F4F5EE)}
+    .scene i{line-height:1}
+    .scene-actor{display:flex;flex-direction:column;align-items:center;gap:7px}
+    .scene-label{font-size:11px;font-weight:700;color:var(--muted)}
+    .scene-avatar{width:56px;height:56px;border-radius:50%;background:#fff;border:.5px solid #E4E4EA;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--cobalt);box-shadow:0 4px 10px rgba(0,0,0,.05);position:relative}
+    .scene-avatar-guard{color:#639922}
+    .scene-avatar-danger{color:var(--danger);box-shadow:0 4px 12px rgba(233,83,96,.12)}
+    .scene-dot{position:absolute;top:-4px;right:-4px;width:20px;height:20px;border-radius:50%;background:var(--signal);border:2px solid #fff;display:flex;align-items:center;justify-content:center}
+    .scene-dot i{font-size:11px;color:#3B4D0E}
+    .scene-relation{display:flex;align-items:center;justify-content:space-between;gap:4px}
+    .scene-link{flex:1.1;display:flex;flex-direction:column;align-items:center}
+    .scene-dash{width:100%;height:1.5px;background:repeating-linear-gradient(90deg,#C7C7CC 0 5px,transparent 5px 10px)}
+    .scene-link-ico{font-size:18px;color:var(--subtle);margin-top:6px}
+    .scene-caption{font-size:9.5px;color:var(--subtle);margin-top:3px}
+    .scene-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:999px;font-size:9.5px;font-weight:700}
+    .scene-badge i{font-size:11px}
+    .scene-badge-danger{background:var(--danger);color:#fff}
+    .scene-badge-lg{font-size:10.5px;padding:5px 11px;align-self:center}
+    .scene-badge-lg i{font-size:12px}
+    .scene-result{align-self:center;display:inline-flex;align-items:center;gap:6px;margin-top:4px;padding:7px 13px;background:#fff;border:.5px solid #E4E4EA;border-radius:999px;font-size:11px;font-weight:700;color:#3B4D0E}
+    .scene-result i{font-size:14px;color:#639922}
+    .scene-senior{align-items:center}
+    .scene-chev{font-size:15px;color:#A8A8AE}
+    .scene-actor-row{flex-direction:row;gap:9px}
+    .scene-actor-row .scene-avatar{width:48px;height:48px;font-size:24px}
+    .scene-vdash{width:1.5px;height:16px;background:repeating-linear-gradient(180deg,#C7C7CC 0 4px,transparent 4px 8px)}
+    .scene-notify{display:flex;align-items:center;gap:9px;padding:9px 12px;background:#fff;border:.5px solid #E4E4EA;border-radius:12px;box-shadow:0 3px 9px rgba(0,0,0,.05)}
+    .scene-notify-ico{width:30px;height:30px;border-radius:8px;background:#F3F6E9;display:flex;align-items:center;justify-content:center}
+    .scene-notify-ico i{font-size:18px;color:#639922}
+    .scene-notify-txt{display:flex;flex-direction:column;text-align:left}
+    .scene-notify-txt b{font-size:11px;font-weight:700;color:var(--ink);line-height:1.2}
+    .scene-notify-txt small{font-size:9.5px;color:var(--subtle)}
+    .scene-notify-ok{font-size:17px;color:#639922}
+    .scene-incall{gap:8px}
+    .scene-eyebrow{font-size:9px;font-weight:700;color:var(--subtle);letter-spacing:.03em}
+    .scene-alert{display:flex;align-items:center;gap:10px;padding:10px 11px;background:#fff;border:.5px solid #F0C4C8;border-radius:11px}
+    .scene-alert-ico{width:30px;height:30px;border-radius:8px;background:#FFF0F1;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .scene-alert-ico i{font-size:17px;color:var(--danger)}
+    .scene-alert-txt{display:flex;flex-direction:column}
+    .scene-alert-txt b{font-size:11px;font-weight:700;color:#B23540;line-height:1.25}
+    .scene-alert-txt small{font-size:9.5px;color:var(--subtle);margin-top:1px}
+    .scene-incall .scene-chev{align-self:center}
+    .scene-enter{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px;background:var(--cobalt);border-radius:11px;color:#fff;font-size:12px;font-weight:700}
+    .scene-enter i{font-size:16px}
+    .scene-conf{background:#fff;border:.5px solid #E4E4EA;border-radius:11px;padding:11px 12px}
+    .scene-conf-head{display:flex;align-items:center;gap:4px;font-size:9px;font-weight:700;color:#639922;letter-spacing:.02em;margin-bottom:8px}
+    .scene-conf-head i{font-size:11px}
+    .scene-conf-row{display:flex;align-items:center;justify-content:space-between}
+    .scene-conf-p{display:flex;flex-direction:column;align-items:center;flex:1;gap:3px}
+    .scene-conf-p small{font-size:8.5px;color:var(--muted);font-weight:600}
+    .scene-conf-p small.scene-me{color:var(--cobalt);font-weight:700}
+    .scene-cavatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+    .scene-cavatar-ok{background:#F3F6E9;color:#639922}
+    .scene-cavatar-bad{background:#FFF0F1;color:var(--danger)}
+    .scene-cavatar-me{background:#EEF2FF;color:var(--cobalt)}
+    .scene-conf-ico{font-size:13px;color:#C7C7CC}
+    .usecase-card h3{font-size:clamp(26px,2.6vw,36px);line-height:1.08;letter-spacing:-.04em;font-weight:600}
+    .usecase-card>p{margin-top:12px;color:var(--muted);font-size:14px}
+
+    .trust-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(34px,6vw,84px);align-items:start}
+    .trust-copy p{margin-top:20px;color:var(--muted);max-width:560px}
+    .trust-list{border-top:1px solid var(--line-strong)}
+    .trust-item{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line-strong)}
+    .trust-index{font:700 12px/1 var(--font-en);color:var(--subtle);padding-top:6px}
+    .trust-item h3{font-size:22px;line-height:1.25;letter-spacing:-.03em}
+    .trust-item p{margin-top:7px;color:var(--muted);font-size:14px}
+
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .faq-item{border:1px solid var(--line);border-radius:14px;background:#fff;padding:0 16px;box-shadow:0 8px 20px rgba(0,0,0,.025)}
+    .faq-question{width:100%;min-height:64px;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;font-weight:650;color:var(--text)}
+    .faq-question b{color:var(--subtle);font-size:22px;font-weight:500;transition:transform .2s var(--ease)}
+    .faq-item.open .faq-question b{transform:rotate(45deg)}
+    .faq-answer{display:none;padding:0 0 17px;color:var(--muted);font-size:14px;line-height:1.65}
+    .faq-item.open .faq-answer{display:block}
+
+    .final-cta{padding:46px 0 clamp(92px,9vw,130px)}
+    .final-box{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:34px;align-items:end;padding:clamp(28px,5vw,56px);border:1px solid var(--line);border-radius:var(--radius-media);background:linear-gradient(135deg,#ECEEFA,#F7F7F9 56%,#EFF1E8)}
+    .final-box h2{font-size:clamp(44px,6vw,82px);line-height:.98;letter-spacing:-.055em;font-weight:620;text-wrap:balance}
+    .final-side p{color:var(--muted);max-width:470px;margin-bottom:22px}
+    .footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--subtle);font-size:12px;background:#EFEFF1}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center}
+    .footer-links{display:flex;gap:16px;margin-left:auto}
+    .footer-links a{color:var(--subtle);text-decoration:none}
+    .footer-links a:hover{color:var(--text)}
+    .mobile-sticky{display:none}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:1000px){
+      .nav-links{display:none}
+      .hero-grid,.survey-shell,.trust-grid,.final-box{grid-template-columns:1fr}
+      .hero h1{max-width:900px}
+      .hero-side{max-width:760px}
+      .survey-intro{position:static}
+      .how-grid{grid-template-columns:1fr 1fr}
+      .usecase-grid{grid-template-columns:1fr}
+      .usecase-card{min-height:auto}
+    }
+
+    @media(max-width:767px){
+      :root{--page-pad:clamp(16px,5vw,22px);--header-h:56px}
+      .section{padding:64px 0 72px}
+      .nav{min-height:56px}
+      .brand{font-size:18px}
+      .nav .btn{display:none}
+      .hero{padding:44px 0 48px}
+      .hero-grid{display:flex;flex-direction:column;gap:28px}
+      .hero h1{font-size:clamp(42px,12vw,58px);line-height:.99;letter-spacing:-.052em}
+      .hero-sub{font-size:16px}
+      .hero-actions{margin-top:24px}
+      .hero-actions .btn-secondary{display:none}
+
+      /* Mobile hero media: force full width to prevent flex collapse / vertical seam */
+      .hero-side{width:100%;max-width:none;min-width:0;align-self:stretch}
+      .video-shell{width:100%;min-height:0;aspect-ratio:4 / 5;border-radius:18px}
+      .video-shell .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+      .hero .hero-side.reveal{opacity:1;transform:none}
+
+      .risk-toast{left:12px;right:12px;bottom:12px;grid-template-columns:auto 1fr}
+      .risk-state{grid-column:2}
+      .hero-zeros{gap:7px}
+      .hero-zeros span{font-size:11px;line-height:1.4;padding:7px 11px}
+      .section-head{grid-template-columns:1fr;gap:14px;margin-bottom:22px}
+      .section-head h2,.survey-intro h2,.trust-copy h2,.faq-head h2{font-size:clamp(34px,9.3vw,46px)}
+      .section-head>p{justify-self:start}
+      .problem-grid{grid-template-columns:1fr}
+      .problem-card{min-height:0;padding:18px}
+      .problem-visual{min-height:230px;margin:20px 0}
+
+      #how.section{padding:56px 0 60px}
+      #how .section-head{margin-bottom:18px}
+      #how .section-head h2{font-size:clamp(32px,8.7vw,40px);line-height:1.05}
+      #how .section-head>p{font-size:13px;line-height:1.5}
+      #how .how-panel{padding:8px;border-radius:16px}
+      #how .how-grid{display:block;overflow:hidden;border:1px solid rgba(17,17,19,.07);border-radius:13px;background:rgba(255,255,255,.94)}
+      #how .how-step{min-height:0;padding:12px 12px;border:0;border-radius:0;background:transparent;display:grid;grid-template-columns:26px 38px minmax(0,1fr);grid-template-areas:"num icon title" "num icon desc";column-gap:10px;row-gap:2px;align-items:center}
+      #how .how-step + .how-step{border-top:1px solid var(--line)}
+      #how .how-num{grid-area:num;align-self:start;padding-top:5px;font-size:10px}
+      #how .how-icon{grid-area:icon;width:36px;height:36px;margin:0;border-radius:10px;font-size:13px}
+      #how .how-step h3{grid-area:title;margin:0;font-size:16px;line-height:1.28;letter-spacing:-.025em}
+      #how .how-step p{grid-area:desc;margin:2px 0 0;font-size:12px;line-height:1.4}
+
+      #survey.section{padding:52px 0 58px}
+      #survey .survey-shell{gap:18px}
+      #survey .survey-intro h2{margin-top:10px;font-size:clamp(32px,8.7vw,40px);line-height:1.05}
+      #survey .survey-intro p{margin-top:10px;font-size:13px;line-height:1.48}
+      #survey .survey-meta{gap:6px;margin-top:12px}
+      #survey .meta-chip{padding:6px 8px;font-size:10px}
+      #survey .survey-card{padding:14px 14px 12px;border-radius:14px}
+      #survey .survey-progress{gap:10px;margin-bottom:14px;font-size:10px}
+      #survey .progress-track{height:4px}
+      #survey .survey-question h3{font-size:clamp(22px,6.2vw,28px);line-height:1.15;letter-spacing:-.035em}
+      #survey .survey-help{margin-top:5px;font-size:11.5px;line-height:1.4}
+      #survey .option-grid{gap:7px;margin-top:12px}
+      #survey [data-group="target"],#survey [data-group="target_age"],#survey [data-group="respondent_age"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+      #survey [data-group="intervention"],#survey [data-group="intent"]{grid-template-columns:1fr}
+      #survey .option{min-height:44px;padding:9px 10px;border-radius:9px;font-size:13px;line-height:1.3}
+      #survey .subquestion{margin-top:12px;padding-top:12px}
+      #survey .subquestion h4{font-size:13px;line-height:1.35}
+      #survey .subquestion .option-grid{margin-top:9px}
+      #survey .survey-actions{margin-top:14px}
+      #survey .survey-actions .btn{min-height:42px;padding-inline:14px;font-size:13px}
+      #survey .survey-msg{min-height:16px;margin-top:6px;font-size:11px;line-height:1.35}
+
+      #usecases.section{padding:56px 0 60px}
+      #usecases .section-head{gap:12px;margin-bottom:18px}
+      #usecases .section-head h2{font-size:clamp(32px,8.7vw,40px);line-height:1.05}
+      #usecases .section-head>p{font-size:13px;line-height:1.48}
+      #usecases .usecase-grid{gap:8px}
+      #usecases .usecase-card{min-height:0;padding:14px 15px 15px;border-radius:14px}
+      #usecases .usecase-top{font-size:10px}
+      #usecases .status-pill{gap:5px;padding:6px 8px;font-size:10px}
+      #usecases .status-pill i{width:6px;height:6px}
+      #usecases .usecase-visual{flex:none;min-height:290px;height:290px;margin:12px 0 13px;padding:0;border-top:0;border-bottom:0}
+      #usecases .scene{padding:15px 14px}
+      #usecases .usecase-card h3{font-size:22px;line-height:1.13;letter-spacing:-.035em}
+      #usecases .usecase-card>p{margin-top:7px;font-size:12.5px;line-height:1.43}
+
+      .summary-row{grid-template-columns:90px 1fr}
+      .faq-grid{grid-template-columns:1fr}
+      .final-box{padding:22px}
+      .final-box h2{font-size:clamp(38px,11vw,52px)}
+      .footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+      .footer-inner{display:grid}
+      .mobile-sticky{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:45;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 6px 6px 13px;border:1px solid rgba(17,17,19,.09);border-radius:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);box-shadow:0 14px 38px rgba(0,0,0,.10);transform:translateY(140%);transition:transform .3s var(--ease)}
+      .mobile-sticky.show{transform:none}
+      .mobile-sticky small{color:var(--muted);font-size:11px;font-weight:650;line-height:1.35;max-width:150px}
+      .mobile-sticky .btn{min-height:42px;padding-inline:14px;font-size:12px}
+    }
+
+    @media(max-width:380px){
+      .hero h1{font-size:40px}
+      .video-shell{width:100%;min-height:0;aspect-ratio:4 / 5}
+      .hero-zeros span{padding:6px 10px}
+      #how .how-step{grid-template-columns:23px 34px minmax(0,1fr);padding:11px;column-gap:8px}
+      #how .how-icon{width:34px;height:34px}
+      #how .how-step h3{font-size:15px}
+      #survey .survey-card{padding:13px 12px}
+      #survey .option{padding:8px 9px;font-size:12.5px}
+      #usecases .usecase-card h3{font-size:21px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="CALL X home">CALL <span class="x">X</span></a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#how" data-i18n="navHow">Comment ça protège</a>
+        <a href="#survey" data-i18n="navSurvey">Sondage rapide</a>
+        <a href="#usecases" data-i18n="navCases">Cas d'usage</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="#survey" data-i18n="navCta">Donner mon avis</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow" data-i18n="heroEyebrow">CALL X · Family Call Protection</div>
+          <h1>
+            <span data-i18n="heroTitle1">Un appel suspect reçu par un proche,</span>
+            <span class="soft" data-i18n="heroTitle2">ne doit pas être affronté seul.</span>
+          </h1>
+          <p class="hero-sub" data-i18n="heroDesc">Si un appel suspect arrive chez votre enfant ou vos parents, ou si un signal d'hameçonnage vocal est détecté pendant l'appel, la personne protectrice est alertée et peut, si besoin, rejoindre l'appel.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#survey" data-i18n="heroCta">Donner mon avis</a>
+            <a class="btn btn-secondary" href="#how" data-i18n="heroSecondary">Voir comment ça marche</a>
+            <p class="hero-note" data-i18n="heroNote">Pré-inscription gratuite — soyez informé·e en premier au lancement</p>
+          </div>
+
+          <div class="hero-zeros">
+            <div><span data-i18n="zero1">Détection de signaux suspects</span></div>
+            <div><span data-i18n="zero2">Alerte au proche</span></div>
+            <div><span data-i18n="zero3">Participation à l'appel si besoin</span></div>
+          </div>
+        </div>
+
+        <div class="hero-side reveal">
+          <div class="video-shell" aria-label="CALL X hero image">
+            <img class="hero-image" src="protection_hero_image.png" alt="CALL X protège des appels suspects reçus par la famille" loading="eager" decoding="async" />
+            <div class="video-veil"></div>
+            <div class="risk-toast">
+              <div class="risk-icon">!</div>
+              <div>
+                <strong data-i18n="riskToastTitle">Un appel suspecté d'hameçonnage vocal a été détecté.</strong>
+                <p data-i18n="riskToastBody">Un signal suspect a été détecté pendant l'appel. Vous pouvez rejoindre si besoin.</p>
+              </div>
+              <span class="risk-state"><i></i><span data-i18n="riskToastState">Alerte au proche</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-i18n="problemEyebrow">Pourquoi ce service</div>
+            <h2 data-i18n="problemTitle">Quand vous n'êtes pas là, vos proches peuvent affronter seuls un appel suspect.</h2>
+          </div>
+          <p data-i18n="problemDesc">Un enfant a du mal à juger si un numéro inconnu est sûr, et vos parents peuvent recevoir des appels d'hameçonnage se faisant passer pour un organisme public ou une banque. CALL X vise à réduire les cas où le proche protecteur ne l'apprend qu'après coup.</p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="problem-card reveal">
+            <div class="problem-kicker"><span data-i18n="kidKicker">ENFANT · NUMÉRO INCONNU</span><span data-i18n="kidState">Quand la famille n'est pas là</span></div>
+            <div class="problem-visual"><img class="problem-photo" src="assets/kid-unknown-call.png" alt="Écran d'alerte au proche protecteur quand un numéro inconnu appelle l'enfant" loading="lazy" decoding="async" /></div>
+            <div><h3 data-i18n="kidTitle">Quand un numéro inconnu appelle votre enfant</h3><p data-i18n="kidDesc">Si un numéro inconnu ou suspecté d'arnaque appelle, le proche protecteur en est informé immédiatement.</p></div>
+          </article>
+
+          <article class="problem-card reveal">
+            <div class="problem-kicker"><span data-i18n="seniorKicker">SENIOR · APPEL À RISQUE</span><span data-i18n="seniorState">Début de l'appel</span></div>
+            <div class="problem-visual"><img class="problem-photo" src="assets/senior-risk-call.png" alt="Écran d'alerte au proche protecteur quand un appel suspect arrive chez un parent" loading="lazy" decoding="async" /></div>
+            <div><h3 data-i18n="seniorTitle">Quand un appel suspect arrive chez vos parents</h3><p data-i18n="seniorDesc">Si le numéro est suspecté d'arnaque ou qu'un signal d'hameçonnage vocal est détecté pendant l'appel, le proche protecteur en est informé.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="eyebrow" data-i18n="howEyebrow">Comment ça marche</div><h2 data-i18n="howTitle">De la détection d'un appel suspect à l'alerte et à la participation à l'appel.</h2></div>
+          <p data-i18n="howDesc">Plutôt que de partager tout le contenu des appels, seules les informations nécessaires sont transmises au moment où un signal suspect est détecté.</p>
+        </div>
+
+        <div class="how-panel">
+          <div class="how-grid">
+            <article class="how-step reveal"><span class="how-num">01</span><div class="how-icon">☎</div><h3 data-i18n="how1Title">L'appel arrive</h3><p data-i18n="how1Desc">Un appel arrive chez votre enfant ou vos parents.</p></article>
+            <article class="how-step reveal"><span class="how-num">02</span><div class="how-icon">X</div><h3 data-i18n="how2Title">CALL X vérifie les signaux suspects</h3><p data-i18n="how2Desc">Numéro inconnu, numéro suspecté d'arnaque, ou signal d'hameçonnage vocal pendant l'appel.</p></article>
+            <article class="how-step reveal"><span class="how-num">03</span><div class="how-icon">!</div><h3 data-i18n="how3Title">Le proche protecteur est alerté</h3><p data-i18n="how3Desc">Les signaux suspects et les informations nécessaires sont transmis pour évaluer si l'appel doit être vérifié.</p></article>
+            <article class="how-step reveal"><span class="how-num">04</span><div class="how-icon">+</div><h3 data-i18n="how4Title">Participation à l'appel si besoin</h3><p data-i18n="how4Desc">En cas de suspicion d'hameçonnage vocal, le proche protecteur peut rejoindre l'appel.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section survey" id="survey">
+      <div class="container survey-shell">
+        <div class="survey-intro reveal">
+          <div class="eyebrow" data-i18n="surveyEyebrow">Moins d'une minute</div>
+          <h2 data-i18n="surveyTitle">Donnez votre avis sur la fonction de protection contre les appels suspects.</h2>
+          <p data-i18n="surveyDesc">3 questions courtes maximum pour identifier à qui et sous quelle forme cette protection serait utile.</p>
+          <div class="survey-meta">
+            <span class="meta-chip" data-i18n="surveyMeta1">3 questions maximum</span>
+            <span class="meta-chip" data-i18n="surveyMeta2">Sans inscription</span>
+            <span class="meta-chip" data-i18n="surveyMeta3">Environ 1 minute</span>
+          </div>
+        </div>
+
+        <div class="survey-card reveal">
+          <form id="surveyForm" novalidate>
+            <label class="hp" aria-hidden="true">Website<input type="text" id="website" name="website" autocomplete="off" tabindex="-1" /></label>
+            <div class="survey-progress"><span id="progressText">1 / 3</span><div class="progress-track"><div class="progress-bar" id="progressBar"></div></div></div>
+
+            <div id="questionViewport">
+              <div id="questionWrap">
+                <section class="survey-question active" data-step="target">
+                  <h3 data-i18n="q1Title">Pour qui cette fonction vous semble-t-elle la plus utile ?</h3>
+                  <p class="survey-help" data-i18n="q1Help">Choisissez la première personne qui vous vient à l'esprit.</p>
+                  <div class="option-grid" data-group="target">
+                    <button type="button" class="option" data-value="kid" data-i18n="q1Kid">Un enfant</button>
+                    <button type="button" class="option" data-value="senior" data-i18n="q1Senior">Un parent ou une personne âgée</button>
+                    <button type="button" class="option" data-value="self" data-i18n="q1Self">Moi-même</button>
+                  </div>
+                  <div class="subquestion" id="targetAgeWrap">
+                    <h4 data-i18n="q1AgeTitle">Indiquez la tranche d’âge de la personne concernée.</h4>
+                    <div class="option-grid" id="targetAgeOptions" data-group="target_age"></div>
+                  </div>
+                </section>
+
+                <section class="survey-question" data-step="intervention">
+                  <h3 data-i18n="q2Title">En cas d'appel suspecté d'hameçonnage vocal, jusqu'où souhaitez-vous être aidé·e ?</h3>
+                  <p class="survey-help" data-i18n="q2Help">Choisissez une seule option, celle que vous préférez.</p>
+                  <div class="option-grid" data-group="intervention">
+                    <button type="button" class="option" data-value="alert" data-i18n="q2Alert">Juste être alerté·e du risque potentiel</button>
+                    <button type="button" class="option" data-value="review" data-i18n="q2Review">Que l'IA réponde d'abord à l'appel pour vérifier le risque, puis m'informe</button>
+                    <button type="button" class="option" data-value="join" data-i18n="q2Join">Que le proche protecteur soit alerté et puisse rejoindre l'appel si besoin</button>
+                    <button type="button" class="option" data-value="unsure" data-i18n="q2Unsure">Je ne sais pas encore quelle formule je préfère</button>
+                  </div>
+                </section>
+
+                <section class="survey-question" data-step="respondent_age">
+                  <h3 data-i18n="q3Title">Quelle est votre tranche d’âge ?</h3>
+                  <p class="survey-help" data-i18n="q3Help">Cette information sert à comparer les réponses par tranche d'âge.</p>
+                  <div class="option-grid" data-group="respondent_age">
+                    <button type="button" class="option" data-value="20s" data-i18n="age20">20-29 ans</button>
+                    <button type="button" class="option" data-value="30s" data-i18n="age30">30-39 ans</button>
+                    <button type="button" class="option" data-value="40s" data-i18n="age40">40-49 ans</button>
+                    <button type="button" class="option" data-value="50s" data-i18n="age50">50-59 ans</button>
+                    <button type="button" class="option" data-value="60plus" data-i18n="age60">60 ans et plus</button>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="survey-actions" id="surveyActions">
+              <button type="button" class="btn btn-secondary" id="prevBtn" disabled data-i18n="prev">Précédent</button>
+              <button type="button" class="btn btn-primary" id="nextBtn" data-i18n="next">Suivant</button>
+            </div>
+            <p class="survey-msg" id="surveyMsg" role="alert"></p>
+          </form>
+
+          <div class="survey-success" id="surveySuccess">
+            <h3 data-i18n="successTitle">Votre réponse a bien été enregistrée.</h3>
+            <p id="successBody" data-i18n="successBody">CALL X utilisera votre réponse pour déterminer par quelle protection commencer.</p>
+            <div class="survey-summary" id="surveySummary"></div>
+            <div style="margin-top:20px"><button type="button" class="btn btn-secondary" id="resetSurvey" data-i18n="reset">Répondre à nouveau</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="usecases">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="eyebrow" data-i18n="casesEyebrow">Cas d'usage</div><h2 data-i18n="casesTitle">CALL X peut aider votre famille dans ces situations.</h2></div>
+          <p data-i18n="casesDesc">De l'appel d'un numéro inconnu à la suspicion d'hameçonnage vocal en cours d'appel, le proche protecteur est informé selon la situation.</p>
+        </div>
+
+        <div class="usecase-grid">
+          <article class="usecase-card reveal">
+            <div class="usecase-top"><span>01 · KIDS</span><span class="status-pill"><i></i><span data-i18n="case1Pill">Numéro inconnu</span></span></div>
+            <div class="usecase-visual">
+              <div class="scene scene-kids">
+                <div class="scene-relation">
+                  <div class="scene-actor"><span class="scene-avatar"><i class="ti ti-mood-kid"></i></span><span class="scene-label" data-i18n="case1Actor1">Enfant</span></div>
+                  <div class="scene-link"><span class="scene-badge scene-badge-danger"><i class="ti ti-alert-triangle"></i><span data-i18n="case1Badge">Numéro inconnu</span></span><span class="scene-dash"></span><i class="ti ti-phone-incoming scene-link-ico"></i><span class="scene-caption" data-i18n="case1Caption">Numéro inconnu</span></div>
+                  <div class="scene-actor"><span class="scene-avatar scene-avatar-guard"><i class="ti ti-user-shield"></i><em class="scene-dot"><i class="ti ti-bell"></i></em></span><span class="scene-label" data-i18n="case1Actor2">Proche protecteur</span></div>
+                </div>
+                <div class="scene-result"><i class="ti ti-circle-check"></i><span data-i18n="case1Result">Alerte envoyée au proche</span></div>
+              </div>
+            </div>
+            <h3 data-i18n="case1Title">Quand un numéro inconnu appelle votre enfant</h3>
+            <p data-i18n="case1Desc">Si un numéro inconnu ou suspecté d'arnaque appelle, le proche protecteur est averti — l'enfant n'a pas à juger seul.</p>
+          </article>
+
+          <article class="usecase-card reveal">
+            <div class="usecase-top"><span>02 · SENIOR</span><span class="status-pill"><i></i><span data-i18n="case2Pill">Numéro suspecté d'arnaque</span></span></div>
+            <div class="usecase-visual">
+              <div class="scene scene-senior">
+                <span class="scene-badge scene-badge-danger scene-badge-lg"><i class="ti ti-shield-x"></i><span data-i18n="case2Badge">Numéro suspecté d'arnaque</span></span>
+                <i class="ti ti-chevron-down scene-chev"></i>
+                <div class="scene-actor scene-actor-row"><span class="scene-avatar scene-avatar-danger"><i class="ti ti-old"></i></span><span class="scene-label" data-i18n="case2Actor1">Parent</span></div>
+                <span class="scene-vdash"></span>
+                <div class="scene-notify"><span class="scene-notify-ico"><i class="ti ti-user-check"></i></span><span class="scene-notify-txt"><b data-i18n="case2Result">Alerte immédiate au proche</b><small data-i18n="case2Sub">Envoyée à l’instant</small></span><i class="ti ti-circle-check scene-notify-ok"></i></div>
+              </div>
+            </div>
+            <h3 data-i18n="case2Title">Quand un numéro suspecté d'arnaque appelle vos parents</h3>
+            <p data-i18n="case2Desc">Le proche protecteur peut vérifier rapidement et décider de la réponse à apporter.</p>
+          </article>
+
+          <article class="usecase-card reveal">
+            <div class="usecase-top"><span>03 · SENIOR / IN-CALL</span><span class="status-pill"><i></i><span data-i18n="case3Pill">Signal suspect en cours d'appel</span></span></div>
+            <div class="usecase-visual">
+              <div class="scene scene-incall">
+                <span class="scene-eyebrow" data-i18n="case3Eyebrow">Écran du proche protecteur</span>
+                <div class="scene-alert"><span class="scene-alert-ico"><i class="ti ti-alert-triangle"></i></span><span class="scene-alert-txt"><b data-i18n="case3Alert">Appel suspecté d'hameçonnage vocal détecté</b><small data-i18n="case3AlertSub">Signal suspect détecté pendant l'appel</small></span></div>
+                <i class="ti ti-chevron-down scene-chev"></i>
+                <div class="scene-enter"><i class="ti ti-arrow-badge-right"></i><span data-i18n="case3Enter">Rejoindre l'appel</span></div>
+                <i class="ti ti-chevron-down scene-chev"></i>
+                <div class="scene-conf">
+                  <span class="scene-conf-head"><i class="ti ti-point-filled"></i><span data-i18n="case3Conf">Appel à trois connecté</span></span>
+                  <div class="scene-conf-row">
+                    <div class="scene-conf-p"><span class="scene-cavatar scene-cavatar-ok"><i class="ti ti-old"></i></span><small data-i18n="case3P1">Parent</small></div>
+                    <i class="ti ti-phone-call scene-conf-ico"></i>
+                    <div class="scene-conf-p"><span class="scene-cavatar scene-cavatar-bad"><i class="ti ti-user-x"></i></span><small data-i18n="case3P2">Interlocuteur</small></div>
+                    <i class="ti ti-phone-call scene-conf-ico"></i>
+                    <div class="scene-conf-p"><span class="scene-cavatar scene-cavatar-me"><i class="ti ti-user-shield"></i></span><small class="scene-me" data-i18n="case3P3">Moi</small></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3 data-i18n="case3Title">Quand un signal d'hameçonnage vocal est détecté en cours d'appel</h3>
+            <p data-i18n="case3Desc">Le signal suspect est transmis au proche protecteur, qui peut rejoindre directement l'appel si besoin.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="trust">
+      <div class="container trust-grid">
+        <div class="trust-copy reveal">
+          <div class="eyebrow" data-i18n="trustEyebrow">Nos garanties</div>
+          <h2 data-i18n="trustTitle">Une fonction qui protège la famille doit être claire sur ce qui est partagé et quand.</h2>
+          <p data-i18n="trustDesc">CALL X ne partage pas en continu le contenu des appels avec le proche protecteur ; seules une alerte de risque et les informations nécessaires sont transmises en cas de suspicion d'hameçonnage vocal.</p>
+        </div>
+
+        <div class="trust-list">
+          <article class="trust-item reveal"><span class="trust-index">01</span><div><h3 data-i18n="trust1Title">Alerte uniquement en cas de signal suspect</h3><p data-i18n="trust1Desc">Plutôt que de surveiller tous les appels en temps réel, le proche n'est informé qu'au moment où un signal suspect est détecté.</p></div></article>
+          <article class="trust-item reveal"><span class="trust-index">02</span><div><h3 data-i18n="trust2Title">L'alerte et la participation à l'appel sont distinctes</h3><p data-i18n="trust2Desc">De la simple alerte à la participation du proche à l'appel, plusieurs niveaux sont possibles.</p></div></article>
+          <article class="trust-item reveal"><span class="trust-index">03</span><div><h3 data-i18n="trust3Title">La décision finale revient à l'utilisateur·rice</h3><p data-i18n="trust3Desc">L'évaluation du risque par l'IA peut être imprécise ; la participation réelle à l'appel reste toujours un choix de l'utilisateur·rice.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="faq-head"><div class="eyebrow">FAQ</div><h2 data-i18n="faqTitle">Des questions sur CALL X ?</h2></div>
+        <div class="faq-grid" style="margin-top:28px">
+          <div class="faq-item open"><button class="faq-question" type="button"><span data-i18n="faq1Q">Le proche protecteur voit-il tout le contenu des appels ?</span><b>+</b></button><div class="faq-answer" data-i18n="faq1A">Non. Le concept actuel ne partage pas en continu le contenu des appels : seules une alerte et les informations nécessaires sont transmises en cas de suspicion d'hameçonnage vocal.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span data-i18n="faq2Q">Puis-je recevoir seulement l'alerte sans rejoindre l'appel ?</span><b>+</b></button><div class="faq-answer" data-i18n="faq2A">Oui. Vous pouvez choisir de recevoir uniquement une alerte, ou de rejoindre l’appel si besoin — plusieurs niveaux sont possibles.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span data-i18n="faq3Q">Est-ce que ça fonctionne de la même façon pour un enfant et un parent ?</span><b>+</b></button><div class="faq-answer" data-i18n="faq3A">L'alerte de base est fournie dans les deux cas ; pour un enfant, l'accent est mis sur les numéros inconnus ou suspects, et pour un parent, sur les numéros suspects et les signaux d'hameçonnage vocal en cours d'appel.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button"><span data-i18n="faq4Q">Est-ce un service disponible dès maintenant ?</span><b>+</b></button><div class="faq-answer" data-i18n="faq4A">Non, il s'agit actuellement d'une phase de validation du concept pour évaluer l'intérêt et le niveau de protection nécessaire.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="final">
+      <div class="container">
+        <div class="final-box">
+          <div class="reveal"><div class="eyebrow">CALL X</div><h2 data-i18n="finalTitle">Qu'un appel suspect ne soit plus jamais affronté seul par la famille.</h2></div>
+          <div class="final-side reveal"><p data-i18n="finalDesc">Dites-nous à qui et sous quelle forme CALL X serait le plus utile, en quelques questions.</p><a class="btn btn-primary" href="#survey" data-i18n="finalCta">Participer au sondage</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner"><span>© 2026 CALL X. Concept prototype.</span><span data-i18n="footerRight">FR · Prototype d'étude client</span>
+      <nav class="footer-links">
+        <a href="https://callx-legal.vercel.app/privacy.html">Politique de confidentialité</a>
+        <a href="https://callx-legal.vercel.app/terms.html">CGU</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky" id="mobileSticky" aria-hidden="true">
+    <small data-i18n="stickyText">Cette protection familiale vous semble-t-elle utile ?</small>
+    <a class="btn btn-primary" href="#survey" data-i18n="stickyCta">Sondage 1 min</a>
+  </div>
+
+  <script>
+  (() => {
+    'use strict';
+
+    /* 이 랜딩페이지 고유 ID — Neon survey_responses.site 컬럼에 저장 */
+    const SITE_ID = 'fr-protection';
+
+    const I18N = {
+      ko: {
+        metaTitle:'CALL X — 가족에게 걸려온 수상한 전화, 혼자 판단하게 두지 않도록',
+        metaDescription:'아이·부모님에게 수상한 전화가 걸려오거나 통화 중 보이스피싱 의심 신호가 감지되면 보호자에게 알리고, 필요한 순간에는 통화에 함께 참여할 수 있는 CALL X 컨셉입니다.',
+        navHow:'어떻게 보호하나요', navSurvey:'빠른 설문', navCases:'사용 장면', navCta:'의견 남기기',
+        heroEyebrow:'CALL X · Family Call Protection',
+        heroTitle1:'가족에게 걸려온 수상한 전화,', heroTitle2:'혼자 판단하게 두지 않도록.',
+        heroDesc:'아이·부모님에게 수상한 전화가 걸려오거나 통화 중 보이스피싱 의심 신호가 감지되면 보호자에게 알리고, 필요한 순간에는 통화에 함께 참여할 수 있습니다.',
+        heroCta:'사전 신청하기', heroSecondary:'이용 흐름 보기',
+        heroNote:'무료로 사전 신청하고 출시 소식을 가장 먼저 받아보세요',
+        zero1:'의심 신호 감지', zero2:'보호자 알림', zero3:'필요 시 통화 참여',
+        riskToastTitle:'보이스피싱이 의심되는 전화가 감지됐습니다.', riskToastBody:'통화에서 의심 신호가 감지됐습니다. 필요하면 함께 참여할 수 있습니다.', riskToastState:'보호자 알림',
+        problemEyebrow:'왜 필요한가요', problemTitle:'내가 곁에 없는 순간, 가족은 수상한 전화를 혼자 마주할 수 있습니다.',
+        problemDesc:'아이는 모르는 번호가 안전한 전화인지 판단하기 어렵고, 부모님은 공공기관·금융기관 등을 사칭한 보이스피싱 전화를 마주할 수 있습니다. 문제가 생긴 뒤에야 보호자가 알게 되는 상황을 줄이는 것이 CALL X의 출발점입니다.',
+        kidKicker:'KIDS · UNKNOWN NUMBER', kidState:'가족이 곁에 없는 순간', kidTitle:'모르는 번호로 아이에게 전화가 걸려왔을 때', kidDesc:'모르는 번호나 사기 의심 번호로 전화가 오면 보호자가 바로 알 수 있도록 알려줍니다.',
+        seniorKicker:'SENIOR · RISKY CALL', seniorState:'통화 시작', seniorTitle:'수상한 전화가 부모님께 걸려왔을 때', seniorDesc:'사기 의심 번호이거나 통화 중 보이스피싱 의심 신호가 감지되면 보호자에게 알려줍니다.',
+        howEyebrow:'이용 흐름', howTitle:'수상한 전화 감지부터 가족 알림과 통화 참여까지.', howDesc:'모든 통화 내용을 보호자에게 공유하는 방식이 아니라, 보이스피싱 등이 의심되는 순간에 필요한 정보만 전달하는 방향입니다.',
+        how1Title:'전화가 옵니다', how1Desc:'아이·부모님에게 전화가 걸려옵니다.',
+        how2Title:'CALL X가 의심 신호를 확인합니다', how2Desc:'모르는 번호·사기 의심 번호 또는 통화 중 보이스피싱 의심 신호를 확인합니다.',
+        how3Title:'보호자에게 알립니다', how3Desc:'확인이 필요한 전화인지 판단할 수 있도록 의심 신호와 필요한 정보를 전달합니다.',
+        how4Title:'필요하면 통화에 함께 참여합니다', how4Desc:'보이스피싱 등이 의심되면 보호자가 통화에 참여할 수 있습니다.',
+        surveyEyebrow:'1분도 안 걸려요', surveyTitle:'수상한 전화 보호 기능에 대한 생각을 알려주세요.',
+        surveyDesc:'최대 3개의 짧은 질문으로 누구에게 어떤 방식의 보호가 유용할지 확인하고 있습니다.',
+        surveyMeta1:'최대 3문항', surveyMeta2:'가입 없이 참여', surveyMeta3:'약 1분',
+        q1Title:'누구에게 가장 필요한 기능이라고 느끼시나요?', q1Help:'가장 먼저 떠오르는 대상을 선택해주세요.',
+        q1Kid:'아이', q1Senior:'부모님 등 시니어', q1Self:'나 자신', q1AgeTitle:'대상의 연령대를 알려주세요.',
+        q2Title:'보이스피싱 등이 의심되는 전화가 왔을 때, 어디까지 도움받고 싶으신가요?', q2Help:'가장 원하는 방식 하나를 골라주세요.',
+        q2Alert:'위험 가능성 알림만 받았으면 좋겠다', q2Review:'AI가 전화를 먼저 받아 위험 여부를 확인한 뒤 알려줬으면 좋겠다', q2Join:'보호자(등록한 가족)에게 알리고, 필요하면 통화에 참여할 수 있으면 좋겠다', q2Unsure:'아직 어떤 방식이 좋을지 잘 모르겠다',
+        q3Title:'응답자님의 연령대를 알려주세요.', q3Help:'응답 결과를 연령대별로 비교하기 위해 확인합니다.',
+        age20:'20대', age30:'30대', age40:'40대', age50:'50대', age60:'60대 이상',
+        prev:'이전', next:'다음', submit:'응답 보내기', sending:'저장 중…',
+        needAnswer:'답변을 하나 선택해주세요.', needTargetAge:'대상의 연령대를 선택해주세요.', saveError:'응답을 저장하지 못했습니다. 잠시 후 다시 시도해주세요.',
+        successTitle:'응답이 저장되었습니다.', successBody:'CALL X가 어떤 보호부터 시작해야 할지 판단하는 데 활용하겠습니다.',
+        localSuccessTitle:'미리보기 응답을 확인했습니다.', localSuccessBody:'현재는 로컬 미리보기라 서버에는 저장되지 않았습니다.', reset:'다시 응답하기',
+        summaryTarget:'보호 대상', summaryTargetAge:'대상 연령', summaryIntervention:'선호 방식', summaryRespondent:'응답자 연령',
+        targetKid:'아이', targetSenior:'시니어', targetSelf:'본인',
+        interventionAlert:'위험 가능성 알림만', interventionReview:'AI가 먼저 확인 후 알림', interventionJoin:'가족 알림·통화 참여', interventionUnsure:'잘 모르겠음',
+        casesEyebrow:'사용 장면', casesTitle:'CALL X는 이런 순간에 가족을 도울 수 있습니다.', casesDesc:'모르는 번호로 전화가 걸려온 순간부터 통화 중 보이스피싱이 의심되는 순간까지, 상황에 맞춰 보호자에게 알려줍니다.',
+        case1Pill:'모르는 번호', case1Actor1:'아이', case1Actor2:'보호자', case1Badge:'모르는 번호', case1Caption:'모르는 번호', case1Result:'보호자에게 알림 전송',
+        case1Title:'모르는 번호로 아이에게 전화가 걸려왔을 때', case1Desc:'모르는 번호나 사기 의심 번호로 전화가 오면 보호자에게 알려, 아이가 혼자 판단해야 하는 상황을 줄입니다.',
+        case2Pill:'사기 의심 번호', case2Badge:'사기 의심 번호', case2Actor1:'부모님', case2Result:'보호자에게 즉시 알림', case2Sub:'방금 전송됨',
+        case2Title:'사기 의심 번호로 부모님에게 전화가 걸려왔을 때', case2Desc:'사기 의심 번호로 전화가 오면 보호자가 빠르게 확인하고 필요한 대응을 판단할 수 있게 합니다.',
+        case3Pill:'통화 중 의심 신호', case3Eyebrow:'보호자의 화면', case3Alert:'보이스피싱 의심 통화 감지', case3AlertSub:'통화 중 의심 패턴 감지', case3Enter:'통화에 참여하기', case3Conf:'3자 통화 연결됨', case3P1:'부모님', case3P2:'상대방', case3P3:'나',
+        case3Title:'통화 중 보이스피싱 의심 신호가 감지됐을 때', case3Desc:'의심 신호를 보호자에게 알리고, 필요하면 통화에 직접 참여해 함께 대응할 수 있게 합니다.',
+        trustEyebrow:'신뢰 포인트', trustTitle:'가족을 지키는 기능일수록, 무엇을 공유하고 언제 알리는지 분명해야 합니다.',
+        trustDesc:'CALL X는 모든 통화 내용을 보호자(등록한 가족)에게 상시 공유하지 않고, 보이스피싱 등이 의심되는 순간에 위험 알림과 필요한 정보만 전달하는 방향을 전제로 합니다.',
+        trust1Title:'의심 신호가 있을 때만 알립니다', trust1Desc:'보호자가 모든 전화를 실시간으로 확인하는 대신, 의심 신호가 감지된 순간만 알려주는 방향입니다.',
+        trust2Title:'알림과 통화 참여는 구분합니다', trust2Desc:'단순 알림부터 보호자의 통화 참여까지 서로 다른 방식으로 선택할 수 있습니다.',
+        trust3Title:'최종 판단은 사용자가 합니다', trust3Desc:'AI의 의심 신호 판단은 정확하지 않을 수 있으며, 실제 통화 참여나 대응 여부는 사용자가 선택하는 구조를 기본으로 합니다.',
+        faqTitle:'CALL X가 궁금하다면.',
+        faq1Q:'모든 통화 내용을 보호자(등록한 가족)가 보게 되나요?', faq1A:'현재 컨셉은 모든 통화 내용을 상시 공유하는 방식이 아니라, 보이스피싱 등이 의심되는 전화에서 보호자에게 위험 알림과 필요한 정보만 전달하는 방향입니다.',
+        faq2Q:'알림만 받고 통화에는 참여하지 않아도 되나요?', faq2A:'네. 알림만 받거나, 필요할 때 보호자가 통화에 참여하는 방식처럼 서로 다른 수준으로 선택할 수 있습니다.',
+        faq3Q:'아이와 부모님에게 같은 방식으로 동작하나요?', faq3A:'기본적으로 의심 전화 알림을 제공하되, 아이는 모르는 번호·사기 의심 번호를 중심으로, 부모님은 사기 의심 번호와 통화 중 보이스피싱 의심 신호까지 확인하는 방식을 고려하고 있습니다.',
+        faq4Q:'지금 바로 사용할 수 있는 서비스인가요?', faq4A:'아직은 고객 반응과 필요한 보호 수준을 확인하기 위한 컨셉 검증 단계입니다.',
+        finalTitle:'수상한 전화를, 가족이 혼자 판단하지 않도록.', finalDesc:'CALL X가 누구에게 어떤 방식으로 가장 유용할지, 짧은 설문으로 의견을 남겨주세요.', finalCta:'설문 참여하기',
+        footerRight:'KR · Customer research prototype', stickyText:'이런 가족 보호 기능, 필요할까요?', stickyCta:'1분 설문'
+      },
+      fr: {
+        metaTitle:'CALL X — Un appel suspect reçu par un proche ne doit pas être affronté seul',
+        metaDescription:"Si un appel suspect arrive chez votre enfant ou vos parents, ou si un signal d'hameçonnage vocal est détecté pendant l'appel, CALL X alerte le proche protecteur et permet, si besoin, de rejoindre l'appel.",
+        navHow:'Comment ça protège', navSurvey:'Sondage rapide', navCases:"Cas d'usage", navCta:'Donner mon avis',
+        heroEyebrow:'CALL X · Family Call Protection',
+        heroTitle1:'Un appel suspect reçu par un proche,', heroTitle2:'ne doit pas être affronté seul.',
+        heroDesc:"Si un appel suspect arrive chez votre enfant ou vos parents, ou si un signal d'hameçonnage vocal est détecté pendant l'appel, la personne protectrice est alertée et peut, si besoin, rejoindre l'appel.",
+        heroCta:'Donner mon avis', heroSecondary:'Voir comment ça marche',
+        heroNote:'Pré-inscription gratuite — soyez informé·e en premier au lancement',
+        zero1:'Détection de signaux suspects', zero2:'Alerte au proche', zero3:"Participation à l'appel si besoin",
+        riskToastTitle:"Un appel suspecté d'hameçonnage vocal a été détecté.", riskToastBody:"Un signal suspect a été détecté pendant l'appel. Vous pouvez rejoindre si besoin.", riskToastState:'Alerte au proche',
+        problemEyebrow:'Pourquoi ce service', problemTitle:"Quand vous n'êtes pas là, vos proches peuvent affronter seuls un appel suspect.",
+        problemDesc:"Un enfant a du mal à juger si un numéro inconnu est sûr, et vos parents peuvent recevoir des appels d'hameçonnage se faisant passer pour un organisme public ou une banque. CALL X vise à réduire les cas où le proche protecteur ne l'apprend qu'après coup.",
+        kidKicker:'ENFANT · NUMÉRO INCONNU', kidState:"Quand la famille n'est pas là", kidTitle:'Quand un numéro inconnu appelle votre enfant', kidDesc:"Si un numéro inconnu ou suspecté d'arnaque appelle, le proche protecteur en est informé immédiatement.",
+        seniorKicker:'SENIOR · APPEL À RISQUE', seniorState:"Début de l'appel", seniorTitle:'Quand un appel suspect arrive chez vos parents', seniorDesc:"Si le numéro est suspecté d'arnaque ou qu'un signal d'hameçonnage vocal est détecté pendant l'appel, le proche protecteur en est informé.",
+        howEyebrow:'Comment ça marche', howTitle:"De la détection d'un appel suspect à l'alerte et à la participation à l'appel.", howDesc:"Plutôt que de partager tout le contenu des appels, seules les informations nécessaires sont transmises au moment où un signal suspect est détecté.",
+        how1Title:"L'appel arrive", how1Desc:'Un appel arrive chez votre enfant ou vos parents.',
+        how2Title:'CALL X vérifie les signaux suspects', how2Desc:"Numéro inconnu, numéro suspecté d'arnaque, ou signal d'hameçonnage vocal pendant l'appel.",
+        how3Title:'Le proche protecteur est alerté', how3Desc:"Les signaux suspects et les informations nécessaires sont transmis pour évaluer si l'appel doit être vérifié.",
+        how4Title:"Participation à l'appel si besoin", how4Desc:"En cas de suspicion d'hameçonnage vocal, le proche protecteur peut rejoindre l'appel.",
+        surveyEyebrow:"Moins d'une minute", surveyTitle:'Donnez votre avis sur la fonction de protection contre les appels suspects.',
+        surveyDesc:"3 questions courtes maximum pour identifier à qui et sous quelle forme cette protection serait utile.",
+        surveyMeta1:'3 questions maximum', surveyMeta2:'Sans inscription', surveyMeta3:'Environ 1 minute',
+        q1Title:'Pour qui cette fonction vous semble-t-elle la plus utile ?', q1Help:"Choisissez la première personne qui vous vient à l'esprit.",
+        q1Kid:'Un enfant', q1Senior:'Un parent ou une personne âgée', q1Self:'Moi-même', q1AgeTitle:'Indiquez la tranche d’âge de la personne concernée.',
+        q2Title:"En cas d'appel suspecté d'hameçonnage vocal, jusqu'où souhaitez-vous être aidé·e ?", q2Help:'Choisissez une seule option, celle que vous préférez.',
+        q2Alert:'Juste être alerté·e du risque potentiel', q2Review:"Que l'IA réponde d'abord à l'appel pour vérifier le risque, puis m'informe", q2Join:"Que le proche protecteur soit alerté et puisse rejoindre l'appel si besoin", q2Unsure:"Je ne sais pas encore quelle formule je préfère",
+        q3Title:'Quelle est votre tranche d’âge ?', q3Help:"Cette information sert à comparer les réponses par tranche d'âge.",
+        age20:'20-29 ans', age30:'30-39 ans', age40:'40-49 ans', age50:'50-59 ans', age60:'60 ans et plus',
+        prev:'Précédent', next:'Suivant', submit:'Envoyer ma réponse', sending:'Enregistrement…',
+        needAnswer:'Veuillez sélectionner une réponse.', needTargetAge:"Veuillez sélectionner la tranche d'âge de la personne concernée.", saveError:"Impossible d'enregistrer votre réponse. Veuillez réessayer.",
+        successTitle:'Votre réponse a bien été enregistrée.', successBody:'CALL X utilisera votre réponse pour déterminer par quelle protection commencer.',
+        localSuccessTitle:'Réponse validée en aperçu.', localSuccessBody:"Vous êtes en aperçu local : la réponse n'a pas été enregistrée.", reset:'Répondre à nouveau',
+        summaryTarget:'Personne à protéger', summaryTargetAge:'Tranche d’âge', summaryIntervention:'Formule préférée', summaryRespondent:'Tranche d’âge du répondant',
+        targetKid:'Enfant', targetSenior:'Senior', targetSelf:'Moi-même',
+        interventionAlert:'Alerte du risque uniquement', interventionReview:"Vérification par l'IA puis alerte", interventionJoin:"Alerte au proche + participation à l'appel", interventionUnsure:'Pas encore sûr·e',
+        casesEyebrow:"Cas d'usage", casesTitle:'CALL X peut aider votre famille dans ces situations.', casesDesc:"De l'appel d'un numéro inconnu à la suspicion d'hameçonnage vocal en cours d'appel, le proche protecteur est informé selon la situation.",
+        case1Pill:'Numéro inconnu', case1Actor1:'Enfant', case1Actor2:'Proche protecteur', case1Badge:'Numéro inconnu', case1Caption:'Numéro inconnu', case1Result:'Alerte envoyée au proche',
+        case1Title:'Quand un numéro inconnu appelle votre enfant', case1Desc:"Si un numéro inconnu ou suspecté d'arnaque appelle, le proche protecteur est averti — l'enfant n'a pas à juger seul.",
+        case2Pill:"Numéro suspecté d'arnaque", case2Badge:"Numéro suspecté d'arnaque", case2Actor1:'Parent', case2Result:'Alerte immédiate au proche', case2Sub:'Envoyée à l’instant',
+        case2Title:"Quand un numéro suspecté d'arnaque appelle vos parents", case2Desc:'Le proche protecteur peut vérifier rapidement et décider de la réponse à apporter.',
+        case3Pill:"Signal suspect en cours d'appel", case3Eyebrow:'Écran du proche protecteur', case3Alert:"Appel suspecté d'hameçonnage vocal détecté", case3AlertSub:"Signal suspect détecté pendant l'appel", case3Enter:"Rejoindre l'appel", case3Conf:'Appel à trois connecté', case3P1:'Parent', case3P2:'Interlocuteur', case3P3:'Moi',
+        case3Title:"Quand un signal d'hameçonnage vocal est détecté en cours d'appel", case3Desc:"Le signal suspect est transmis au proche protecteur, qui peut rejoindre directement l'appel si besoin.",
+        trustEyebrow:'Nos garanties', trustTitle:'Une fonction qui protège la famille doit être claire sur ce qui est partagé et quand.',
+        trustDesc:"CALL X ne partage pas en continu le contenu des appels avec le proche protecteur ; seules une alerte de risque et les informations nécessaires sont transmises en cas de suspicion d'hameçonnage vocal.",
+        trust1Title:'Alerte uniquement en cas de signal suspect', trust1Desc:"Plutôt que de surveiller tous les appels en temps réel, le proche n'est informé qu'au moment où un signal suspect est détecté.",
+        trust2Title:"L'alerte et la participation à l'appel sont distinctes", trust2Desc:"De la simple alerte à la participation du proche à l'appel, plusieurs niveaux sont possibles.",
+        trust3Title:"La décision finale revient à l'utilisateur·rice", trust3Desc:"L'évaluation du risque par l'IA peut être imprécise ; la participation réelle à l'appel reste toujours un choix de l'utilisateur·rice.",
+        faqTitle:'Des questions sur CALL X ?',
+        faq1Q:'Le proche protecteur voit-il tout le contenu des appels ?', faq1A:"Non. Le concept actuel ne partage pas en continu le contenu des appels : seules une alerte et les informations nécessaires sont transmises en cas de suspicion d'hameçonnage vocal.",
+        faq2Q:"Puis-je recevoir seulement l'alerte sans rejoindre l'appel ?", faq2A:'Oui. Vous pouvez choisir de recevoir uniquement une alerte, ou de rejoindre l’appel si besoin — plusieurs niveaux sont possibles.',
+        faq3Q:'Est-ce que ça fonctionne de la même façon pour un enfant et un parent ?', faq3A:"L'alerte de base est fournie dans les deux cas ; pour un enfant, l'accent est mis sur les numéros inconnus ou suspects, et pour un parent, sur les numéros suspects et les signaux d'hameçonnage vocal en cours d'appel.",
+        faq4Q:'Est-ce un service disponible dès maintenant ?', faq4A:"Non, il s'agit actuellement d'une phase de validation du concept pour évaluer l'intérêt et le niveau de protection nécessaire.",
+        finalTitle:"Qu'un appel suspect ne soit plus jamais affronté seul par la famille.", finalDesc:'Dites-nous à qui et sous quelle forme CALL X serait le plus utile, en quelques questions.', finalCta:'Participer au sondage',
+        footerRight:"FR · Prototype d'étude client", stickyText:'Cette protection familiale vous semble-t-elle utile ?', stickyCta:'Sondage 1 min'
+      }
+    };
+
+    const AGE_OPTIONS = {
+      ko: {
+        kid:[['0-6','0~6세'],['7-9','7~9세'],['10-12','10~12세'],['13plus','13세 이상']],
+        senior:[['50s','50대'],['60s','60대'],['70s','70대'],['80plus','80대 이상']],
+        self:[['20s','20대'],['30s','30대'],['40s','40대'],['50s','50대'],['60plus','60대 이상']]
+      },
+      fr: {
+        kid:[['0-6','0-6 ans'],['7-9','7-9 ans'],['10-12','10-12 ans'],['13plus','13 ans et plus']],
+        senior:[['50s','50-59 ans'],['60s','60-69 ans'],['70s','70-79 ans'],['80plus','80 ans et plus']],
+        self:[['20s','20-29 ans'],['30s','30-39 ans'],['40s','40-49 ans'],['50s','50-59 ans'],['60plus','60 ans et plus']]
+      }
+    };
+
+    const state = {lang:'fr',current:0,target:null,target_age:null,intervention:null,respondent_age:null,submitted:false};
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
+    const t = key => I18N[state.lang][key] || I18N.ko[key] || key;
+
+    function applyLanguage(){
+      document.documentElement.lang = state.lang;
+      $$('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        const val = I18N[state.lang][key];
+        if(val !== undefined) el.textContent = val;
+      });
+      document.title = t('metaTitle');
+      const meta = $('meta[name="description"]');
+      if(meta) meta.setAttribute('content', t('metaDescription'));
+      if(state.target) renderTargetAges();
+      if(!state.submitted) renderSurvey(false);
+      else renderSummary();
+    }
+
+    const reveals = $$('.reveal');
+    if('IntersectionObserver' in window){
+      const ro = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+        });
+      }, {threshold:.12, rootMargin:'0px 0px -32px 0px'});
+      reveals.forEach(el => ro.observe(el));
+    } else reveals.forEach(el => el.classList.add('visible'));
+
+    $$('.faq-question').forEach(btn => btn.addEventListener('click', () => btn.closest('.faq-item')?.classList.toggle('open')));
+
+    const form = $('#surveyForm');
+    const questionViewport = $('#questionViewport');
+    const questions = $$('.survey-question');
+    const progressText = $('#progressText');
+    const progressBar = $('#progressBar');
+    const prevBtn = $('#prevBtn');
+    const nextBtn = $('#nextBtn');
+    const msg = $('#surveyMsg');
+    const success = $('#surveySuccess');
+    let isTransitioning = false;
+
+    function activeSteps(){ return state.target === 'self' ? ['target','intervention'] : ['target','intervention','respondent_age']; }
+    function getActiveQuestion(){ return questions.find(q => q.classList.contains('active')); }
+    function syncQuestionViewportHeight(){
+      const active = getActiveQuestion();
+      if(!active || !questionViewport) return;
+      requestAnimationFrame(() => { questionViewport.style.height = `${active.offsetHeight}px`; });
+    }
+
+    function renderTargetAges(){
+      const wrap = $('#targetAgeWrap');
+      const holder = $('#targetAgeOptions');
+      if(!state.target){ wrap.classList.remove('show'); holder.innerHTML = ''; syncQuestionViewportHeight(); return; }
+      const items = AGE_OPTIONS[state.lang][state.target];
+      holder.innerHTML = items.map(([value,label]) => `<button type="button" class="option${state.target_age===value?' selected':''}" data-value="${value}">${label}</button>`).join('');
+      wrap.classList.add('show');
+      $$('.option', holder).forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.target_age = btn.dataset.value;
+          $$('.option', holder).forEach(x => x.classList.toggle('selected', x === btn));
+          msg.textContent = '';
+          syncQuestionViewportHeight();
+        });
+      });
+      syncQuestionViewportHeight();
+    }
+
+    function updateSurveyUI(){
+      const steps = activeSteps();
+      state.current = Math.min(state.current, steps.length - 1);
+      progressText.textContent = `${state.current + 1} / ${steps.length}`;
+      progressBar.style.width = `${((state.current + 1) / steps.length) * 100}%`;
+      prevBtn.disabled = state.current === 0;
+      nextBtn.textContent = state.current === steps.length - 1 ? t('submit') : t('next');
+      msg.textContent = '';
+      $$('[data-group]').forEach(group => {
+        const field = group.dataset.group;
+        if(field === 'target_age') return;
+        $$('.option', group).forEach(btn => btn.classList.toggle('selected', state[field] === btn.dataset.value));
+      });
+    }
+
+    function renderSurvey(animate=false, direction=1){
+      const steps = activeSteps();
+      state.current = Math.min(state.current, steps.length - 1);
+      const currentStep = steps[state.current];
+      const currentQuestion = getActiveQuestion();
+      const nextQuestion = questions.find(q => q.dataset.step === currentStep);
+      updateSurveyUI();
+      renderTargetAges();
+      if(!nextQuestion) return;
+
+      if(!animate || currentQuestion === nextQuestion){
+        questions.forEach(q => {
+          q.classList.remove('active','enter-from-right','enter-from-left','leave-to-left','leave-to-right');
+          if(q === nextQuestion) q.classList.add('active');
+        });
+        syncQuestionViewportHeight();
+        return;
+      }
+
+      if(isTransitioning) return;
+      isTransitioning = true;
+      const oldHeight = currentQuestion?.offsetHeight || questionViewport.offsetHeight;
+      questionViewport.style.height = `${oldHeight}px`;
+      if(currentQuestion){
+        currentQuestion.classList.remove('active');
+        currentQuestion.classList.add(direction > 0 ? 'leave-to-left' : 'leave-to-right');
+      }
+      nextQuestion.classList.add('active', direction > 0 ? 'enter-from-right' : 'enter-from-left');
+      requestAnimationFrame(() => { questionViewport.style.height = `${nextQuestion.offsetHeight}px`; });
+      window.setTimeout(() => {
+        questions.forEach(q => q.classList.remove('enter-from-right','enter-from-left','leave-to-left','leave-to-right'));
+        nextQuestion.classList.add('active');
+        questionViewport.style.height = 'auto';
+        isTransitioning = false;
+      }, 360);
+    }
+
+    function bindStaticOptions(){
+      $$('[data-group]').forEach(group => {
+        const field = group.dataset.group;
+        if(field === 'target_age') return;
+        $$('.option', group).forEach(btn => {
+          btn.addEventListener('click', () => {
+            const oldTarget = state.target;
+            state[field] = btn.dataset.value;
+            if(field === 'target' && oldTarget !== state.target){
+              state.target_age = null;
+              if(state.target === 'self') state.respondent_age = null;
+            }
+            $$('.option', group).forEach(x => x.classList.toggle('selected', x === btn));
+            msg.textContent = '';
+            if(field === 'target'){ updateSurveyUI(); renderTargetAges(); }
+            else syncQuestionViewportHeight();
+          });
+        });
+      });
+    }
+
+    function currentField(){ return activeSteps()[state.current]; }
+    function validateCurrent(){
+      const field = currentField();
+      if(field === 'target'){
+        if(!state.target){ msg.textContent = t('needAnswer'); return false; }
+        if(!state.target_age){ msg.textContent = t('needTargetAge'); return false; }
+        return true;
+      }
+      if(!state[field]){ msg.textContent = t('needAnswer'); return false; }
+      return true;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if(isTransitioning || state.current <= 0) return;
+      state.current--;
+      renderSurvey(true, -1);
+    });
+
+    nextBtn.addEventListener('click', async () => {
+      if(isTransitioning || !validateCurrent()) return;
+      const steps = activeSteps();
+      if(state.current < steps.length - 1){ state.current++; renderSurvey(true, 1); return; }
+      await submitSurvey();
+    });
+
+    function collectTracking(){
+      const params = new URLSearchParams(location.search);
+      const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
+      const out = {};
+      keys.forEach(k => { out[k] = (params.get(k) || '').slice(0,300) || null; });
+      out.referrer = (document.referrer || '').slice(0,500) || null;
+      out.page_path = location.pathname.slice(0,300);
+      out.variant = (params.get('v') || params.get('variant') || '').slice(0,80) || null;
+      return out;
+    }
+
+    function payload(){
+      return {
+        site: SITE_ID,
+        language: state.lang,
+        answers:{
+          target: state.target,
+          target_age: state.target_age,
+          intervention: state.intervention,
+          respondent_age: state.target === 'self' ? state.target_age : state.respondent_age
+        },
+        website:$('#website')?.value || '',
+        ...collectTracking()
+      };
+    }
+
+    async function submitSurvey(){
+      nextBtn.disabled = true;
+      prevBtn.disabled = true;
+      nextBtn.textContent = t('sending');
+      msg.textContent = '';
+      const data = payload();
+
+      const isLocal = location.protocol==='file:' || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+      console.log('[CALL X] survey submitted', data);
+      if(isLocal){ setTimeout(()=>showSuccess(false), 250); return; }
+
+      try{
+        const res = await fetch('/api/submit', {
+          method:'POST',
+          headers:{ 'Content-Type':'application/json' },
+          body:JSON.stringify(data)
+        });
+        if(!res.ok) throw new Error(`HTTP ${res.status}`);
+        showSuccess(true);
+      }catch(err){
+        console.error('[CALL X] survey save failed', err);
+        msg.textContent = t('saveError');
+        nextBtn.disabled=false;
+        prevBtn.disabled=state.current===0;
+        nextBtn.textContent=t('submit');
+      }
+    }
+
+    function labelFor(field, value){
+      if(!value) return '—';
+      const map = {
+        target:{kid:t('targetKid'),senior:t('targetSenior'),self:t('targetSelf')},
+        intervention:{alert:t('interventionAlert'),review:t('interventionReview'),join:t('interventionJoin'),unsure:t('interventionUnsure')}
+      };
+      if(map[field]?.[value]) return map[field][value];
+      if(field === 'target_age'){
+        const all = Object.values(AGE_OPTIONS[state.lang]).flat();
+        return all.find(([v]) => v === value)?.[1] || value;
+      }
+      if(field === 'respondent_age'){
+        const direct = {'20s':t('age20'),'30s':t('age30'),'40s':t('age40'),'50s':t('age50'),'60plus':t('age60')};
+        return direct[value] || value;
+      }
+      return value;
+    }
+
+    function renderSummary(){
+      const summary = $('#surveySummary');
+      if(!summary) return;
+      const respondent = state.target === 'self' ? state.target_age : state.respondent_age;
+      const rows = [
+        [t('summaryTarget'), labelFor('target', state.target)],
+        [t('summaryTargetAge'), labelFor('target_age', state.target_age)],
+        [t('summaryIntervention'), labelFor('intervention', state.intervention)],
+        [t('summaryRespondent'), labelFor('respondent_age', respondent)]
+      ];
+      summary.innerHTML = rows.map(([k,v]) => `<div class="summary-row"><span>${k}</span><strong>${v}</strong></div>`).join('');
+    }
+
+    function showSuccess(saved){
+      state.submitted = true;
+      form.style.display = 'none';
+      success.classList.add('show');
+      $('#successBody').textContent = saved ? t('successBody') : t('localSuccessBody');
+      $('.survey-success h3').textContent = saved ? t('successTitle') : t('localSuccessTitle');
+      renderSummary();
+      success.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+
+    $('#resetSurvey').addEventListener('click', () => {
+      Object.assign(state, {current:0,target:null,target_age:null,intervention:null,respondent_age:null,submitted:false});
+      $('#website').value = '';
+      success.classList.remove('show');
+      form.style.display = '';
+      nextBtn.disabled = false;
+      renderSurvey(false);
+      form.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+
+    bindStaticOptions();
+
+    const sticky = $('#mobileSticky');
+    const survey = $('#survey');
+    function updateSticky(){
+      if(innerWidth > 767){
+        sticky.classList.remove('show');
+        sticky.setAttribute('aria-hidden','true');
+        return;
+      }
+      const y = scrollY;
+      const show = y > innerHeight * .65 && y < survey.offsetTop - 180;
+      sticky.classList.toggle('show', show);
+      sticky.setAttribute('aria-hidden', String(!show));
+    }
+    addEventListener('scroll', updateSticky, {passive:true});
+    addEventListener('resize', () => { updateSticky(); syncQuestionViewportHeight(); }, {passive:true});
+
+    applyLanguage();
+    renderSurvey(false);
+    updateSticky();
+  })();
+  </script>
+
+  <script src="tracking.js"></script>
+</body>
+</html>
